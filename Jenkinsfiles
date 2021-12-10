@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                build quietPeriod: 5, job: 'Buildjob'
+            }
+        }
+        stage('Test') {
+            steps {
+                build quietPeriod: 5, job: 'TestJob'
+            }
+        }
+        stage('SendEmail') {
+            steps {
+                emailext body: 'Build and. test completed', subject: 'Build and. test completed', to: 'venkateshk09@yahoo.com'
+            }
+        }
+        
+    }
