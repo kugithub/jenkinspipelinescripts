@@ -2,8 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage('Hello') {
+            steps {
+                echo "Running Hello phase"
+            }
+        }
         stage('Build') {
             steps {
+                echo "Running build phase"
                 build quietPeriod: 5, job: 'Buildjob'
             }
         }
